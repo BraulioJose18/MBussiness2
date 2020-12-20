@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id "org.jetbrains.kotlin.kapt"
 }
 
 android {
@@ -39,7 +40,19 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Mapstruct dependencies
+    implementation "org.mapstruct:mapstruct:1.4.1.Final"
+    kapt "org.mapstruct:mapstruct-processor:1.4.1.Final"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    //Firestore Dependencies
+    implementation 'com.google.firebase:firebase-firestore:22.0.1'
+
+    //RX java - Replace with Lifecycle Android.
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.4'
 }
