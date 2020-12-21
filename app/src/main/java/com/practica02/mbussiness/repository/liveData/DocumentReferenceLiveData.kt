@@ -9,7 +9,7 @@ open class DocumentReferenceLiveData<E>(
     private val entityClass: Class<E>
 ) : MutableLiveData<E>(), EventListener<DocumentSnapshot> {
 
-    private val TAG: String = DocumentReferenceLiveData::class.simpleName!!
+    private val tag: String = DocumentReferenceLiveData::class.simpleName!!
     private lateinit var snapshotListener: ListenerRegistration
 
     override fun onActive() {
@@ -24,10 +24,10 @@ open class DocumentReferenceLiveData<E>(
 
     override fun onEvent(documentSnapshot: DocumentSnapshot?, error: FirebaseFirestoreException?) {
         if (documentSnapshot != null && documentSnapshot.exists()) {
-            Log.e(TAG, "Updating data")
+            Log.e(this.tag, "Updating data")
             documentSnapshot.toObject(this.entityClass)!!.also { this.value = it }
         } else if (error != null)
-            Log.e(TAG, error.message, error.cause)
+            Log.e(this.tag, error.message, error.cause)
     }
 
 }

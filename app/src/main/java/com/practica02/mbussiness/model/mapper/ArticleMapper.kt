@@ -13,6 +13,7 @@ interface ArticleMapper : GenericMapper<Article, ArticleDTO> {
         value = [
             Mapping(target = "identifier", source = "entity.identifier"),
             Mapping(target = "name", source = "entity.name"),
+            Mapping(target = "unitaryPrice", source = "entity.unitaryPrice"),
             Mapping(target = "registryState", source = "entity.registryState"),
             Mapping(target = "brand", source = "entity.brand"),
             Mapping(target = "unitOfMeasurement", source = "entity.unitOfMeasurement")

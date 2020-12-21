@@ -3,14 +3,13 @@ package com.practica02.mbussiness.repository.liveData
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.*
-import kotlin.reflect.KProperty
 
-open class MultipleDocumentReference<E, L : Query>(
+open class MultipleDocumentReference<E, out L : Query>(
     private val multipleReference: L,
     private val entityClass: Class<E>,
 ) : MutableLiveData<List<E>>(), EventListener<QuerySnapshot> {
 
-    private val TAG: String = MultipleDocumentReference::class.simpleName!!
+    private val tag: String = MultipleDocumentReference::class.simpleName!!
     private lateinit var listener: ListenerRegistration
 
     override fun onActive() {
@@ -25,10 +24,10 @@ open class MultipleDocumentReference<E, L : Query>(
 
     override fun onEvent(querySnapshot: QuerySnapshot?, error: FirebaseFirestoreException?) {
         if (querySnapshot != null && !querySnapshot.isEmpty) {
-            Log.e(TAG, "Updating data")
+            Log.e(this.tag, "Updating data")
             querySnapshot.toObjects(entityClass).also { this.value = it }
         } else if (error != null)
-            Log.e(TAG, error.message, error.cause)
+            Log.e(this.tag, error.message, error.cause)
     }
 
 }
