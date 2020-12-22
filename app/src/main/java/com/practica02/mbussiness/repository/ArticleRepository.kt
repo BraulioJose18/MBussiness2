@@ -3,9 +3,11 @@ package com.practica02.mbussiness.repository
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.Article
 
-class ArticleRepository : FirestoreRepository<Article>(Article::class.java) {
+class ArticleRepository private constructor()
+    : FirestoreRepository<Article>(Article::class.java) {
 
     companion object {
+        public val instance: ArticleRepository = ArticleRepository()
         public const val NAME = "name"
         public const val UNITARY_PRICE = "unitaryPrice"
     }

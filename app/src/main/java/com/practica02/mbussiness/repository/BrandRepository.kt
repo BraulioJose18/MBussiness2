@@ -3,7 +3,8 @@ package com.practica02.mbussiness.repository
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.Brand
 
-class BrandRepository : FirestoreRepository<Brand>(Brand::class.java) {
+class BrandRepository private constructor()
+    : FirestoreRepository<Brand>(Brand::class.java) {
 
     companion object {
         public val instance: BrandRepository = BrandRepository()

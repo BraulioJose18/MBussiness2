@@ -3,9 +3,11 @@ package com.practica02.mbussiness.repository
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement
 
-class UnitOfMeasurementRepository : FirestoreRepository<UnitOfMeasurement>(UnitOfMeasurement::class.java) {
+class UnitOfMeasurementRepository private constructor() :
+    FirestoreRepository<UnitOfMeasurement>(UnitOfMeasurement::class.java) {
 
     companion object {
+        public val instance: UnitOfMeasurementRepository = UnitOfMeasurementRepository()
         public const val NAME = "name"
     }
 
