@@ -32,6 +32,9 @@ public class AdapterBrand extends RecyclerView.Adapter<AdapterBrand.ViewHolder> 
         return 0;
     }
 
+    public void setBrand(List<Brand> listaMarca) {
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

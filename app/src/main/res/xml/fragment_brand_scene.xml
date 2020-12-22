@@ -7,7 +7,7 @@
         app:constraintSetStart="@+id/fragment_brand_motion_start">
 
         <OnSwipe
-            app:touchAnchorSide="bottom"
+            app:touchAnchorId="@+id/view_brand"
             app:dragDirection="dragUp"
             />
     </Transition>

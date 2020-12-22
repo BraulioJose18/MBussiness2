@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/addMarca" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/view_brand"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/border_filter"
