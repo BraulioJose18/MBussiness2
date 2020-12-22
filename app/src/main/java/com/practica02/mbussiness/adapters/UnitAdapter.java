@@ -29,7 +29,6 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
     private OnClickDataListener<UnitOfMeasurement> modifyListener;
     private OnClickDataListener<UnitOfMeasurement> deleteListener;
 
-
     public UnitAdapter(Context context){
         this.inflater = LayoutInflater.from(context);
         this.listUnidad = new ArrayList<>();
@@ -81,8 +80,8 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.id = itemView.findViewById(R.id.idDocumentoUnidadMedida);
-            this.name = itemView.findViewById(R.id.nameUnidad);
+            this.id = itemView.findViewById(R.id.codUnidadMedida);
+            this.name = itemView.findViewById(R.id.nombreUnidadMedida);
             this.registryState = itemView.findViewById(R.id.statusUnidadMedida);
             this.view = itemView.findViewById(R.id.bVerUnidadMedida);
             this.modify = itemView.findViewById(R.id.bModificarUnidadMedida);

@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
 
-public class UnitModifyViewDialog extends UnitViewDialog {
+public class UnitModifyDialog extends UnitViewDialog {
 
-    public UnitModifyViewDialog(UnitOfMeasurementDTO unitDTO){
+    public UnitModifyDialog(UnitOfMeasurementDTO unitDTO){
         super(unitDTO);
     }
 

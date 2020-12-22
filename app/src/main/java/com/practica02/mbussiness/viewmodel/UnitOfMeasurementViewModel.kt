@@ -12,7 +12,7 @@ class UnitOfMeasurementViewModel : ViewModel() {
 
     private val repository: UnitOfMeasurementRepository by lazy { UnitOfMeasurementRepository.instance }
     val builderQuery: Query by lazy { this.repository.findAll() }
-    val brandLiveData: MultipleDocumentReferenceLiveData<UnitOfMeasurement, Query> by lazy {
+    val allUnitLiveData: MultipleDocumentReferenceLiveData<UnitOfMeasurement, Query> by lazy {
         MultipleDocumentReferenceLiveData(
             this.repository.findAll(),
             UnitOfMeasurement::class.java

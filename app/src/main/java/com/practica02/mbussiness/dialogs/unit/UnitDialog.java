@@ -8,11 +8,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.google.common.collect.Lists;
 import com.practica02.mbussiness.R;
 import com.practica02.mbussiness.repository.RequirementsRepository;
@@ -31,7 +29,7 @@ public abstract class UnitDialog extends AppCompatDialogFragment {
 
     @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstaceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
         LayoutInflater inflater = Objects.requireNonNull(this.getActivity()).getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_unit, null);

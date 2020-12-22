@@ -1,22 +1,8 @@
 package com.practica02.mbussiness.dialogs.unit;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDialogFragment;
-
-import com.practica02.mbussiness.R;
-import com.practica02.mbussiness.model.dto.BrandDTO;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
-import com.practica02.mbussiness.model.mapper.BrandMapper;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
 
 public class UnitAddDialog extends UnitDialog {
