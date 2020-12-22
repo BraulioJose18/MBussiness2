@@ -10,7 +10,14 @@
     <string name="marca_icon">Icono de Marcas, al presionar sobre este icono se mostrarán los "documentos" de toda la "colección" de Marcas</string>
     <string name="search_icon">Icono de Búsqueda, al presionar sobre este icono se realizarán las búsquedas dentro de la "colección" en la que se encuentre actualmente</string>
     <!--Descripción de filtros-->
-    <string name="filtros_des">En el sección de Filtros podremos escoger las opciones por las cuales querramos mostrar los datos.
+    <string name="filtros_des">Para hacer uso de la opción Filtros, deberemos presionar la barra o nombre "Filtros". Donde se despliega un submenú
+        donde se muestran las opciones de:<br/>
+        Ordenar por Nombre, <br/>
+        Ordenar por Código<br/>
+        A continuación vemos también una opción de filtrados por:<br/>
+        Activo, <br/>
+        Inactivo, <br/>
+        Eliminado.
     </string>
     <!--Descripción de botones-->
     <string name="add_button_des">El botón Añadir permite crear un nuevo "documento" dependiendo de la colección donde se encuentre.</string>
