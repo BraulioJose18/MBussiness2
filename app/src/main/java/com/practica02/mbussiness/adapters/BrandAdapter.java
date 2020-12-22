@@ -1,17 +1,15 @@
 package com.practica02.mbussiness.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.practica02.mbussiness.R;
+import com.practica02.mbussiness.dialogs.brand.BrandViewDialog;
 import com.practica02.mbussiness.model.dto.BrandDTO;
 import com.practica02.mbussiness.model.entity.Brand;
 import com.practica02.mbussiness.model.mapper.BrandMapper;
@@ -28,7 +26,6 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
     private OnClickDataListener<Brand> viewListener;
     private OnClickDataListener<Brand> modifyListener;
     private OnClickDataListener<Brand> deleteListener;
-    private final String TAG = BrandAdapter.class.getSimpleName();
 
     public BrandAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
@@ -47,7 +44,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
         BrandDTO dto = BrandMapper.getMapper().entityToDto(this.brandList.get(position));
         holder.id.setText(dto.getIdentifier());
         holder.name.setText(dto.getName());
-        holder.registryState.setText(dto.getRegistryState());
+        holder.registryState.setText(BrandViewDialog.getSpinnerFromRegistryState(dto.getRegistryState()));
         holder.view.setOnClickListener(v -> this.viewListener.onClick(this.brandList.get(position)));
         holder.modify.setOnClickListener(v -> this.modifyListener.onClick(this.brandList.get(position)));
         holder.delete.setOnClickListener(v -> this.deleteListener.onClick(this.brandList.get(position)));
@@ -58,7 +55,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
         return this.brandList.size();
     }
 
-    public void setBrand(List<Brand> brandList) {
+    public void setBrand(List<? extends Brand> brandList) {
         this.brandList.clear();
         this.brandList.addAll(brandList);
     }

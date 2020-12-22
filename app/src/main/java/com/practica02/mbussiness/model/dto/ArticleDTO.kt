@@ -3,10 +3,10 @@ package com.practica02.mbussiness.model.dto
 import com.google.firebase.firestore.Exclude
 
 data class ArticleDTO(
-    override val identifier: String = "",
-    val name: String,
-    val unitaryPrice: String,
-    override val registryState: String,
+    override var identifier: String = "",
+    var name: String,
+    var unitaryPrice: String,
+    override var registryState: String,
 ) : DatabaseRegistryDTO(identifier, registryState) {
 
     lateinit var brand: BrandDTO

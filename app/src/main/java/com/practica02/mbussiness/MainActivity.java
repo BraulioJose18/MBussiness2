@@ -56,12 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();*/
 
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
-        for (Method method : Brand.class.getMethods()) {
-            System.out.println(method.getName());
-            for (Annotation annotation : method.getDeclaredAnnotations()) {
-                System.out.println(annotation.annotationType().getSimpleName());
-            }
-        }
     }
 
     @Override

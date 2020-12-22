@@ -1,7 +1,7 @@
 package com.practica02.mbussiness.model.dto
 
 data class BrandDTO(
-    override val identifier: String = "",
-    val name: String,
-    override val registryState: String,
+    override var identifier: String = "",
+    var name: String,
+    override var registryState: String,
 ) : DatabaseRegistryDTO(identifier, registryState)

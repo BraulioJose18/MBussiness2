@@ -15,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.practica02.mbussiness.R;
 import com.practica02.mbussiness.adapters.BrandAdapter;
 import com.practica02.mbussiness.dialogs.brand.BrandAddDialog;
+import com.practica02.mbussiness.dialogs.brand.BrandModifyDialog;
+import com.practica02.mbussiness.dialogs.brand.BrandViewDialog;
+import com.practica02.mbussiness.model.dto.BrandDTO;
 import com.practica02.mbussiness.model.entity.Brand;
+import com.practica02.mbussiness.model.mapper.BrandMapper;
 import com.practica02.mbussiness.viewmodel.BrandViewModel;
 
 import java.util.List;
@@ -37,18 +41,31 @@ public class BrandFragment extends Fragment {
         this.editSearch = view.findViewById(R.id.editSearchBrand);
         this.brandAdapter = new BrandAdapter(this.getContext());
         this.brandViewModel = new ViewModelProvider(this).get(BrandViewModel.class);
+        this.brandAdapter.setViewListener(data -> createViewDialog(BrandMapper.getMapper().entityToDto(data)));
+        this.brandAdapter.setModifyListener(data -> createModifyDialog(BrandMapper.getMapper().entityToDto(data)));
+        this.brandAdapter.setDeleteListener(data -> brandViewModel.delete(data));
         this.btnAddBrand.setOnClickListener(v -> createAddDialog());
         this.recyclerViewBrand.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewBrand.setAdapter(this.brandAdapter);
         this.brandViewModel.getAllBrandLiveData().observe(this, brands -> {
-            brandAdapter.setBrand((List<Brand>) brands);
+            brandAdapter.setBrand(brands);
             brandAdapter.notifyDataSetChanged();
         });
         return view;
     }
 
+    private void createModifyDialog(BrandDTO dto) {
+        BrandModifyDialog viewDialog = new BrandModifyDialog(dto);
+        viewDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
+    }
+
     private void createAddDialog() {
-        BrandAddDialog brandAddDialog = new BrandAddDialog();
-        brandAddDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
+        BrandAddDialog addDialog = new BrandAddDialog();
+        addDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
+    }
+
+    private void createViewDialog(BrandDTO dto) {
+        BrandViewDialog viewDialog = new BrandViewDialog(dto);
+        viewDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 }
