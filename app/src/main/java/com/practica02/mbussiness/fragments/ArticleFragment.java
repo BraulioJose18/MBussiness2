@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.practica02.mbussiness.R;
 
-public class FragmentArticle extends Fragment {
+public class ArticleFragment extends Fragment {
 
     private Spinner fieldBrand, orderBrand;
 

@@ -1,7 +1,6 @@
 package com.practica02.mbussiness;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -15,14 +14,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.practica02.mbussiness.fragments.BrandFragment;
-import com.practica02.mbussiness.fragments.FragmentArticle;
+import com.practica02.mbussiness.fragments.ArticleFragment;
 import com.practica02.mbussiness.fragments.FragmentUnitOfMeasurement;
 import com.practica02.mbussiness.fragments.HelpMBusiness;
-import com.practica02.mbussiness.model.dto.BrandDTO;
-import com.practica02.mbussiness.model.entity.Brand;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -85,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item.getItemId() == R.id.item2) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container, new FragmentArticle());
+            fragmentTransaction.replace(R.id.container, new ArticleFragment());
             fragmentTransaction.commit();
             toolbar.setTitle("Maestro de Artículos");
         }

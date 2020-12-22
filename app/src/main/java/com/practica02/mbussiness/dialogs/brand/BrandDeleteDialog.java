@@ -42,10 +42,6 @@ public class BrandDeleteDialog extends AppCompatDialogFragment {
         this.img = view.findViewById(R.id.imageViewDelete);
         this.img.setImageResource(R.drawable.ic_danger);
         this.brandViewModel = new ViewModelProvider(this).get(BrandViewModel.class);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                getContext(),
-                R.array.combo_status,
-                android.R.layout.simple_spinner_item);
         builder
                 .setView(view)
                 .setTitle("¿Seguro que desea eliminar?")
