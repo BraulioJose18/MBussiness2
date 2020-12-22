@@ -6,9 +6,9 @@
         app:constraintSetEnd="@layout/fragment_brand_motion_end"
         app:constraintSetStart="@+id/fragment_brand_motion_start">
 
-        <OnSwipe
-            app:touchAnchorId="@+id/view_brand"
-            app:dragDirection="dragUp"
+        <OnClick
+            app:targetId="@+id/view_brand"
+            app:clickAction="jumpToEnd"
             />
     </Transition>
 

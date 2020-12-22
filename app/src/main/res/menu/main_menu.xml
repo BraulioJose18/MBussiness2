@@ -15,4 +15,12 @@
             android:title="Marcas"
             android:checkable="true"
             android:icon="@drawable/ic_brand"/>
+
+        <item
+            android:id="@+id/item4"
+            android:title="Ayuda"
+            android:checkable="true"
+            android:icon="@drawable/ic_help"
+            />
+
 </menu>
