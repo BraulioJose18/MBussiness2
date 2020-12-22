@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.practica02.mbussiness.R;
 import com.practica02.mbussiness.adapters.BrandAdapter;
 import com.practica02.mbussiness.dialogs.brand.BrandAddDialog;
+import com.practica02.mbussiness.dialogs.brand.BrandDeleteDialog;
 import com.practica02.mbussiness.dialogs.brand.BrandModifyDialog;
 import com.practica02.mbussiness.dialogs.brand.BrandViewDialog;
 import com.practica02.mbussiness.model.dto.BrandDTO;
@@ -43,7 +44,7 @@ public class BrandFragment extends Fragment {
         this.brandViewModel = new ViewModelProvider(this).get(BrandViewModel.class);
         this.brandAdapter.setViewListener(data -> createViewDialog(BrandMapper.getMapper().entityToDto(data)));
         this.brandAdapter.setModifyListener(data -> createModifyDialog(BrandMapper.getMapper().entityToDto(data)));
-        this.brandAdapter.setDeleteListener(data -> brandViewModel.delete(data));
+        this.brandAdapter.setDeleteListener(data -> createDeleteDialog(BrandMapper.getMapper().entityToDto(data)));
         this.btnAddBrand.setOnClickListener(v -> createAddDialog());
         this.recyclerViewBrand.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewBrand.setAdapter(this.brandAdapter);
@@ -52,6 +53,11 @@ public class BrandFragment extends Fragment {
             brandAdapter.notifyDataSetChanged();
         });
         return view;
+    }
+
+    private void createDeleteDialog(BrandDTO dto) {
+        BrandDeleteDialog viewDialog = new BrandDeleteDialog(dto);
+        viewDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 
     private void createModifyDialog(BrandDTO dto) {
