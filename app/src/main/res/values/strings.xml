@@ -14,10 +14,7 @@
         donde se muestran las opciones de:<br/>
         Ordenar por Nombre, <br/>
         Ordenar por Código<br/>
-        A continuación vemos también una opción de filtrados por:<br/>
-        Activo, <br/>
-        Inactivo, <br/>
-        Eliminado.
+        A continuación vemos también una opción de filtrados por Estado: Activo, Inactivo y Eliminado.
     </string>
     <!--Descripción de botones-->
     <string name="add_button_des">El botón Añadir permite crear un nuevo "documento" dependiendo de la colección donde se encuentre.</string>

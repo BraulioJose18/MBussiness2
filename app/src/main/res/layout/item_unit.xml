@@ -126,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Modificar"
+                    android:text="Editar"
                     android:textSize="12sp"
                     android:background="@drawable/button_style"
                     android:textColor="@color/white"

@@ -65,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/border_filter"
+        android:backgroundTint="@color/gray2"
         app:layout_constraintBottom_toTopOf="@id/almacen_opciones_filtrado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -73,7 +74,7 @@
         android:id="@+id/almacen_opciones_filtrado"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/white"
+        android:background="@color/gray2"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
