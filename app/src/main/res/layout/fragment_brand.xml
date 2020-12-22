@@ -124,6 +124,7 @@
 			android:id="@+id/almacen_check"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:layout_marginStart="20dp"
 			android:orientation="horizontal">
 
 			<CheckBox

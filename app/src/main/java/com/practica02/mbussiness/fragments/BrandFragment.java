@@ -112,11 +112,8 @@ public class BrandFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty()) {
-                    if (liveDataByName != null && liveDataByRegistry != null) {
-                        resultLiveData.removeSource(liveDataByName);
-                        resultLiveData.removeSource(liveDataByRegistry);
-                        resultLiveData.addSource(allLiveData, brands -> resultLiveData.setValue(brands));
-                    }
+                    cleanResults();
+                    resultLiveData.addSource(allLiveData, brands -> resultLiveData.setValue(brands));
                 } else {
                     Log.e(TAG, "No change data result");
                 }
