@@ -12,12 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.practica02.mbussiness.R;
 import com.practica02.mbussiness.adapters.BrandAdapter;
 import com.practica02.mbussiness.dialogs.brand.BrandAddDialog;
+import com.practica02.mbussiness.model.entity.Brand;
 import com.practica02.mbussiness.viewmodel.BrandViewModel;
 
+import java.util.List;
 import java.util.Objects;
 
 public class BrandFragment extends Fragment {
@@ -39,7 +40,10 @@ public class BrandFragment extends Fragment {
         this.btnAddBrand.setOnClickListener(v -> createAddDialog());
         this.recyclerViewBrand.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewBrand.setAdapter(this.brandAdapter);
-        // Falta conectar con los livedata.
+        this.brandViewModel.getAllBrandLiveData().observe(this, brands -> {
+            brandAdapter.setBrand((List<Brand>) brands);
+            brandAdapter.notifyDataSetChanged();
+        });
         return view;
     }
 

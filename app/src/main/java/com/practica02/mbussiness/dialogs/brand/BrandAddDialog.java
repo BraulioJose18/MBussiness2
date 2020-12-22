@@ -3,19 +3,17 @@ package com.practica02.mbussiness.dialogs.brand;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
-
 import androidx.lifecycle.ViewModelProvider;
 import com.practica02.mbussiness.R;
 import com.practica02.mbussiness.model.dto.BrandDTO;
-import com.practica02.mbussiness.model.entity.Brand;
 import com.practica02.mbussiness.model.mapper.BrandMapper;
 import com.practica02.mbussiness.repository.RequirementsRepository;
 import com.practica02.mbussiness.viewmodel.BrandViewModel;
@@ -27,6 +25,7 @@ public class BrandAddDialog extends AppCompatDialogFragment {
     private EditText name;
     private Spinner spinnerRegistryState;
     private BrandViewModel brandViewModel;
+    private String TAG = BrandAddDialog.class.getSimpleName();
 
     @NonNull
     @Override
@@ -55,7 +54,9 @@ public class BrandAddDialog extends AppCompatDialogFragment {
                     else if (actualState.equalsIgnoreCase("Eliminado"))
                         registryState = RequirementsRepository.ELIMINATED;
                     else registryState = RequirementsRepository.ACTIVE;
-                    BrandDTO dto = new BrandDTO(null, this.name.getText().toString(), registryState);
+                    BrandDTO dto = new BrandDTO("", this.name.getText().toString(), registryState);
+                    Log.e(TAG, dto.toString());
+                    Log.e(TAG, BrandMapper.getMapper().dtoToEntity(dto).toString());
                     this.brandViewModel.save(BrandMapper.getMapper().dtoToEntity(dto));
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {

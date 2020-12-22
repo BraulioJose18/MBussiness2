@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.DatabaseRegistry
 
-abstract class FirestoreRepository<E : DatabaseRegistry<String, Char>>(
+abstract class FirestoreRepository<E : DatabaseRegistry>(
     private val entityClass: Class<E>
 ) : CrudRepository<String, E>, RequirementsRepository {
 
@@ -15,17 +15,18 @@ abstract class FirestoreRepository<E : DatabaseRegistry<String, Char>>(
         const val REGISTRY_STATE = "registryState"
     }
 
-    private val collection: CollectionReference =
+    private val collection: CollectionReference by lazy {
         FirebaseFirestore.getInstance().collection(this.entityClass.simpleName)
+    }
 
     override fun save(entity: E): Task<Void> =
         this.collection.document().set(entity)
 
     override fun update(entity: E): Task<Void> =
-        this.collection.document(entity.identifier!!).set(entity)
+        this.collection.document(entity.identifier).set(entity)
 
     override fun delete(entity: E): Task<Void> =
-        this.collection.document(entity.identifier!!).delete()
+        this.collection.document(entity.identifier).delete()
 
     override fun findById(identifier: String): DocumentReference =
         this.collection.document(identifier)

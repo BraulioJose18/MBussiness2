@@ -2,30 +2,17 @@ package com.practica02.mbussiness.model.mapper
 
 import com.practica02.mbussiness.model.dto.BrandDTO
 import com.practica02.mbussiness.model.entity.Brand
-import org.mapstruct.InheritInverseConfiguration
-import org.mapstruct.Mapper
-import org.mapstruct.Mapping
-import org.mapstruct.Mappings
-import org.mapstruct.factory.Mappers
 
-@Mapper(uses = [ArticleMapper::class])
-interface BrandMapper : GenericMapper<Brand, BrandDTO> {
+class BrandMapper private constructor() :
+    GenericMapper<Brand, BrandDTO> {
 
     companion object {
         @JvmStatic
-        val mapper: BrandMapper = Mappers.getMapper(BrandMapper::class.java)
+        val mapper: BrandMapper = BrandMapper()
     }
 
-    @Mappings(
-        value = [
-            Mapping(target = "identifier", source = "entity.identifier"),
-            Mapping(target = "name", source = "entity.name"),
-            Mapping(target = "registryState", source = "entity.registryState")
-        ]
-    )
-    override fun entityToDto(entity: Brand): BrandDTO;
+    override fun entityToDto(entity: Brand): BrandDTO = BrandDTO(entity.identifier, entity.name, entity.registryState)
 
-    @InheritInverseConfiguration(name = "entityToDto")
-    override fun dtoToEntity(dto: BrandDTO): Brand;
+    override fun dtoToEntity(dto: BrandDTO): Brand = Brand(dto.identifier, dto.name, dto.registryState)
 
 }

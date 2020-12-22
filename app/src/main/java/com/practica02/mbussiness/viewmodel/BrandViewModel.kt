@@ -12,7 +12,7 @@ class BrandViewModel : ViewModel() {
 
     private val repository: BrandRepository by lazy { BrandRepository.instance }
     val builderQuery: Query by lazy { this.repository.findAll() }
-    val brandLiveData: MultipleDocumentReferenceLiveData<Brand, Query> by lazy {
+    val allBrandLiveData: MultipleDocumentReferenceLiveData<Brand, Query> by lazy {
         MultipleDocumentReferenceLiveData(
             this.repository.findAll(),
             Brand::class.java

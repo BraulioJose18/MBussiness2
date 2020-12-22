@@ -18,6 +18,10 @@ import com.practica02.mbussiness.fragments.BrandFragment;
 import com.practica02.mbussiness.fragments.FragmentArticle;
 import com.practica02.mbussiness.fragments.FragmentUnitOfMeasurement;
 import com.practica02.mbussiness.model.dto.BrandDTO;
+import com.practica02.mbussiness.model.entity.Brand;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,8 +54,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new FragmentUnitOfMeasurement());
         fragmentTransaction.commit();*/
-        onNavigationItemSelected(navigationView.getMenu().getItem(0));
 
+        onNavigationItemSelected(navigationView.getMenu().getItem(0));
+        for (Method method : Brand.class.getMethods()) {
+            System.out.println(method.getName());
+            for (Annotation annotation : method.getDeclaredAnnotations()) {
+                System.out.println(annotation.annotationType().getSimpleName());
+            }
+        }
     }
 
     @Override
