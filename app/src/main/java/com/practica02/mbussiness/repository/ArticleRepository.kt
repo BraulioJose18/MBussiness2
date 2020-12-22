@@ -3,31 +3,26 @@ package com.practica02.mbussiness.repository
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.Article
 
-class ArticleRepository private constructor()
-    : FirestoreRepository<Article>(Article::class.java) {
+class ArticleRepository private constructor() : FirestoreRepository<Article>(Article::class.java) {
 
     companion object {
-        public val instance: ArticleRepository = ArticleRepository()
-        public const val NAME = "name"
-        public const val UNITARY_PRICE = "unitaryPrice"
+        val instance: ArticleRepository = ArticleRepository()
+        private const val NAME = "name"
+        private const val UNITARY_PRICE = "unitaryPrice"
+
+        fun filterByName(query: Query, value: String): Query =
+            instance.filterByFieldValue(query, ArticleRepository.NAME, value)
+
+        fun orderAscendingByName(query: Query): Query =
+            instance.oderAscendingBy(query, ArticleRepository.NAME)
+
+        fun orderDescendingByName(query: Query): Query =
+            instance.oderDescendingBy(query, ArticleRepository.NAME)
+
+        fun orderAscendingByUnitaryPrice(query: Query): Query =
+            instance.oderAscendingBy(query, ArticleRepository.UNITARY_PRICE)
+
+        fun orderDescendingByUnitaryPrice(query: Query): Query =
+            instance.oderDescendingBy(query, ArticleRepository.UNITARY_PRICE)
     }
-
-    fun filterByName(query: Query, value: String): Query =
-        this.filterByFieldValue(query, NAME, value)
-
-    fun orderAscendingByName(query: Query): Query =
-        this.oderAscendingBy(query, NAME)
-
-    fun orderDescendingByName(query: Query): Query =
-        this.oderDescendingBy(query, NAME)
-
-    fun orderAscendingByUnitaryPrice(query: Query): Query =
-        this.oderAscendingBy(query, UNITARY_PRICE)
-
-    fun orderDescendingByUnitaryPrice(query: Query): Query =
-        this.oderDescendingBy(query, UNITARY_PRICE)
-
-    // FALTA LLAMADAS A LAS RELACIONES EMBEBIDAS
-
-
 }

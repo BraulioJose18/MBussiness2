@@ -4,7 +4,7 @@ import com.google.firebase.firestore.Exclude
 
 data class ArticleDTO(
     @get:Exclude
-    override val identifier: String,
+    override val identifier: String? = null,
     val name: String,
     val unitaryPrice: String,
     override val registryState: String,
