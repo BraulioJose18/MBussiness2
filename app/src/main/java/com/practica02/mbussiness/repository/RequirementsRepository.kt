@@ -15,8 +15,8 @@ interface RequirementsRepository {
     fun filterByFieldValue(query: Query, field: String, value: String): Query
 
     // Order
-    fun oderAscendingBy(query: Query, field: String): Query
-    fun oderDescendingBy(query: Query, field: String): Query
-    fun oderAscendingByRegistryState(query: Query): Query
-    fun oderDescendingByRegistryState(query: Query): Query
+    fun orderAscendingBy(query: Query, field: String): Query
+    fun orderDescendingBy(query: Query, field: String): Query
+    fun orderAscendingByRegistryState(query: Query): Query
+    fun orderDescendingByRegistryState(query: Query): Query
 }

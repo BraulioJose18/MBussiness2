@@ -14,15 +14,15 @@ class ArticleRepository private constructor() : FirestoreRepository<Article>(Art
             FirestoreRepository.Companion.filterByFieldValue(query, ArticleRepository.NAME, value)
 
         fun orderAscendingByName(query: Query): Query =
-            FirestoreRepository.Companion.oderAscendingBy(query, ArticleRepository.NAME)
+            FirestoreRepository.Companion.orderAscendingBy(query, ArticleRepository.NAME)
 
         fun orderDescendingByName(query: Query): Query =
-            FirestoreRepository.Companion.oderDescendingBy(query, ArticleRepository.NAME)
+            FirestoreRepository.Companion.orderDescendingBy(query, ArticleRepository.NAME)
 
         fun orderAscendingByUnitaryPrice(query: Query): Query =
-            FirestoreRepository.Companion.oderAscendingBy(query, ArticleRepository.UNITARY_PRICE)
+            FirestoreRepository.Companion.orderAscendingBy(query, ArticleRepository.UNITARY_PRICE)
 
         fun orderDescendingByUnitaryPrice(query: Query): Query =
-            FirestoreRepository.Companion.oderDescendingBy(query, ArticleRepository.UNITARY_PRICE)
+            FirestoreRepository.Companion.orderDescendingBy(query, ArticleRepository.UNITARY_PRICE)
     }
 }

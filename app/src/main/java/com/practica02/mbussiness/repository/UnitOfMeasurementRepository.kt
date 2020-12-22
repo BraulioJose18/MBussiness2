@@ -13,6 +13,6 @@ class UnitOfMeasurementRepository private constructor() :
             FirestoreRepository.Companion.filterByFieldValue(query, UnitOfMeasurementRepository.NAME, value)
 
         fun orderAscendingByName(query: Query): Query =
-            FirestoreRepository.Companion.oderAscendingBy(query, UnitOfMeasurementRepository.NAME)
+            FirestoreRepository.Companion.orderAscendingBy(query, UnitOfMeasurementRepository.NAME)
     }
 }

@@ -14,21 +14,21 @@ abstract class FirestoreRepository<E : DatabaseRegistry>(
     companion object : RequirementsRepository {
         private const val REGISTRY_STATE = "registryState"
         override fun filterByRegistryStates(query: Query, values: List<String>): Query =
-            query.whereArrayContains(REGISTRY_STATE, values)
+            query.whereIn(REGISTRY_STATE, values)
 
         override fun filterByFieldValue(query: Query, field: String, value: String): Query =
             query.whereEqualTo(field, value)
 
-        override fun oderAscendingBy(query: Query, field: String): Query =
+        override fun orderAscendingBy(query: Query, field: String): Query =
             query.orderBy(field, Query.Direction.ASCENDING)
 
-        override fun oderDescendingBy(query: Query, field: String): Query =
+        override fun orderDescendingBy(query: Query, field: String): Query =
             query.orderBy(field, Query.Direction.DESCENDING)
 
-        override fun oderAscendingByRegistryState(query: Query): Query =
+        override fun orderAscendingByRegistryState(query: Query): Query =
             query.orderBy(REGISTRY_STATE, Query.Direction.ASCENDING)
 
-        override fun oderDescendingByRegistryState(query: Query): Query =
+        override fun orderDescendingByRegistryState(query: Query): Query =
             query.orderBy(REGISTRY_STATE, Query.Direction.DESCENDING)
 
         override fun filterByRegistryState(query: Query, value: String): Query =
