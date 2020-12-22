@@ -9,29 +9,29 @@ import com.practica02.mbussiness.model.entity.DatabaseRegistry
 
 abstract class FirestoreRepository<E : DatabaseRegistry>(
     private val entityClass: Class<E>
-) : CrudRepository<String, E>, RequirementsRepository {
+) : CrudRepository<String, E> {
 
-    companion object {
+    companion object : RequirementsRepository {
         private const val REGISTRY_STATE = "registryState"
-        fun filterByRegistryStates(query: Query, values: List<String>): Query =
+        override fun filterByRegistryStates(query: Query, values: List<String>): Query =
             query.whereArrayContains(REGISTRY_STATE, values)
 
-        fun filterByFieldValue(query: Query, field: String, value: String): Query =
+        override fun filterByFieldValue(query: Query, field: String, value: String): Query =
             query.whereEqualTo(field, value)
 
-        fun oderAscendingBy(query: Query, field: String): Query =
+        override fun oderAscendingBy(query: Query, field: String): Query =
             query.orderBy(field, Query.Direction.ASCENDING)
 
-        fun oderDescendingBy(query: Query, field: String): Query =
+        override fun oderDescendingBy(query: Query, field: String): Query =
             query.orderBy(field, Query.Direction.DESCENDING)
 
-        fun oderAscendingByRegistryState(query: Query): Query =
+        override fun oderAscendingByRegistryState(query: Query): Query =
             query.orderBy(REGISTRY_STATE, Query.Direction.ASCENDING)
 
-        fun oderDescendingByRegistryState(query: Query): Query =
+        override fun oderDescendingByRegistryState(query: Query): Query =
             query.orderBy(REGISTRY_STATE, Query.Direction.DESCENDING)
 
-        fun filterByRegistryState(query: Query, value: String): Query =
+        override fun filterByRegistryState(query: Query, value: String): Query =
             query.whereEqualTo(REGISTRY_STATE, value)
 
     }
