@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.practica02.mbussiness.R;
+import com.practica02.mbussiness.dialogs.unit.ViewUnit;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
@@ -48,7 +49,7 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.ViewHolder> {
         UnitOfMeasurementDTO dto = UnitOfMeasurementMapper.getMapper().entityToDto(this.listUnidad.get(position));
         holder.id.setText(dto.getIdentifier());
         holder.name.setText(dto.getName());
-        //holder.registryState.setText(ViewDial);
+        holder.registryState.setText(ViewUnit.getSpinnerFromRegistryState(dto.getRegistryState()));
         holder.view.setOnClickListener(v->this.viewListener.onClick(this.listUnidad.get(position)));
         holder.modify.setOnClickListener(v->this.modifyListener.onClick(this.listUnidad.get(position)));
         holder.delete.setOnClickListener(v->this.deleteListener.onClick(this.listUnidad.get(position)));
