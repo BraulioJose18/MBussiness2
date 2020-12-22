@@ -12,7 +12,28 @@ abstract class FirestoreRepository<E : DatabaseRegistry>(
 ) : CrudRepository<String, E>, RequirementsRepository {
 
     companion object {
-        const val REGISTRY_STATE = "registryState"
+        private const val REGISTRY_STATE = "registryState"
+        fun filterByRegistryStates(query: Query, values: List<String>): Query =
+            query.whereArrayContains(REGISTRY_STATE, values)
+
+        fun filterByFieldValue(query: Query, field: String, value: String): Query =
+            query.whereEqualTo(field, value)
+
+        fun oderAscendingBy(query: Query, field: String): Query =
+            query.orderBy(field, Query.Direction.ASCENDING)
+
+        fun oderDescendingBy(query: Query, field: String): Query =
+            query.orderBy(field, Query.Direction.DESCENDING)
+
+        fun oderAscendingByRegistryState(query: Query): Query =
+            query.orderBy(REGISTRY_STATE, Query.Direction.ASCENDING)
+
+        fun oderDescendingByRegistryState(query: Query): Query =
+            query.orderBy(REGISTRY_STATE, Query.Direction.DESCENDING)
+
+        fun filterByRegistryState(query: Query, value: String): Query =
+            query.whereEqualTo(REGISTRY_STATE, value)
+
     }
 
     private val collection: CollectionReference by lazy {
@@ -33,22 +54,4 @@ abstract class FirestoreRepository<E : DatabaseRegistry>(
 
     override fun findAll(): Query =
         this.collection
-
-    override fun filterByRegistryState(query: Query, field: String, values: Array<String>): Query =
-        query.whereArrayContains(field, values)
-
-    override fun filterByFieldValue(query: Query, field: String, value: String): Query =
-        query.whereEqualTo(field, value)
-
-    override fun oderAscendingBy(query: Query, field: String): Query =
-        query.orderBy(field, Query.Direction.ASCENDING)
-
-    override fun oderDescendingBy(query: Query, field: String): Query =
-        query.orderBy(field, Query.Direction.DESCENDING)
-
-    fun oderAscendingByRegistryState(query: Query): Query =
-        query.orderBy(REGISTRY_STATE, Query.Direction.ASCENDING)
-
-    fun oderDescendingByRegistryState(query: Query): Query =
-        query.orderBy(REGISTRY_STATE, Query.Direction.DESCENDING)
 }
