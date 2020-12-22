@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();*/
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
 
-
-
     }
 
     @Override
@@ -68,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
+
+        item.setChecked(true);
+        myUnchecked(item);
+
         if(item.getItemId() == R.id.item1){
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
@@ -89,5 +91,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return false;
+    }
+
+    private void myUnchecked(MenuItem item){
+        for(int i=0; i<navigationView.getMenu().size(); i++){
+            if(navigationView.getMenu().getItem(i).getItemId() != item.getItemId())
+                navigationView.getMenu().getItem(i).setChecked(false);
+        }
     }
 }
