@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.practica02.mbussiness.R;
-import com.practica02.mbussiness.dialogs.unit.ViewUnitDialog;
+import com.practica02.mbussiness.dialogs.unit.UnitViewDialog;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
 import com.practica02.mbussiness.utils.OnClickDataListener;
 
-public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.ViewHolder> {
+public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
     private final List<UnitOfMeasurement> listUnidad;
@@ -30,24 +30,24 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.ViewHolder> {
     private OnClickDataListener<UnitOfMeasurement> deleteListener;
 
 
-    public AdapterUnit(Context context){
+    public UnitAdapter(Context context){
         this.inflater = LayoutInflater.from(context);
         this.listUnidad = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public AdapterUnit.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UnitAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_unit, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterUnit.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UnitAdapter.ViewHolder holder, int position) {
         UnitOfMeasurementDTO dto = UnitOfMeasurementMapper.getMapper().entityToDto(this.listUnidad.get(position));
         holder.id.setText(dto.getIdentifier());
         holder.name.setText(dto.getName());
-        holder.registryState.setText(ViewUnitDialog.getSpinnerFromRegistryState(dto.getRegistryState()));
+        holder.registryState.setText(UnitViewDialog.getSpinnerFromRegistryState(dto.getRegistryState()));
         holder.view.setOnClickListener(v->this.viewListener.onClick(this.listUnidad.get(position)));
         holder.modify.setOnClickListener(v->this.modifyListener.onClick(this.listUnidad.get(position)));
         holder.delete.setOnClickListener(v->this.deleteListener.onClick(this.listUnidad.get(position)));

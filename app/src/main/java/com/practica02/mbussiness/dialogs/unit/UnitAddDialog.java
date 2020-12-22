@@ -19,7 +19,7 @@ import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
 import com.practica02.mbussiness.model.mapper.BrandMapper;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
 
-public class AddUnitDialog extends UnitDialog {
+public class UnitAddDialog extends UnitDialog {
 
     public void buildDialog(AlertDialog.Builder builder) {
         this.identifier.setText("Autogenerado");

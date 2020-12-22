@@ -26,7 +26,7 @@ public abstract class UnitDialog extends AppCompatDialogFragment {
     protected EditText name;
     protected Spinner spinnerRegistryState;
     protected UnitOfMeasurementViewModel UnitOfMeasurementViewModel;
-    protected final String TAG = AddUnitDialog.class.getSimpleName();
+    protected final String TAG = UnitAddDialog.class.getSimpleName();
     protected List<String> optionsSpinner;
 
     @NonNull

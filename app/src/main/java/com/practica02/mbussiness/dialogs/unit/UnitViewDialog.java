@@ -5,11 +5,11 @@ import android.app.AlertDialog;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
 import com.practica02.mbussiness.repository.RequirementsRepository;
 
-public class ViewUnitDialog extends UnitDialog{
+public class UnitViewDialog extends UnitDialog{
 
     protected final UnitOfMeasurementDTO unit;
 
-    public ViewUnitDialog(UnitOfMeasurementDTO unitDTO){
+    public UnitViewDialog(UnitOfMeasurementDTO unitDTO){
         this.unit = unitDTO;
     }
 

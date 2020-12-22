@@ -20,13 +20,13 @@ import com.practica02.mbussiness.viewmodel.UnitOfMeasurementViewModel;
 
 import java.util.Objects;
 
-public class DeleteUnitDialog extends AppCompatDialogFragment {
+public class UnitDeleteDialog extends AppCompatDialogFragment {
     private final UnitOfMeasurementDTO unit;
     private ImageView img;
     private UnitOfMeasurementViewModel unitViewModel;
 
 
-    public DeleteUnitDialog(UnitOfMeasurementDTO unit) {
+    public UnitDeleteDialog(UnitOfMeasurementDTO unit) {
         this.unit = unit;
     }
 

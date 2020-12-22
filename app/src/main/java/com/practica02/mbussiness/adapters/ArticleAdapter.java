@@ -8,23 +8,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.practica02.mbussiness.model.entity.Article;
-import com.practica02.mbussiness.model.entity.Brand;
 
 import java.util.List;
 
-public class AdapterArticle extends RecyclerView.Adapter<AdapterArticle.ViewHolder> {
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
 
     LayoutInflater inflater;
     List<Article> listArtcile;
 
     @NonNull
     @Override
-    public AdapterArticle.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ArticleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterArticle.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArticleAdapter.ViewHolder holder, int position) {
 
     }
 
