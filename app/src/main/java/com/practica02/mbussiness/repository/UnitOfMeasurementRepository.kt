@@ -4,6 +4,7 @@ import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement
 
 class UnitOfMeasurementRepository : FirestoreRepository<UnitOfMeasurement>(UnitOfMeasurement::class.java) {
+
     companion object {
         public const val NAME = "name"
     }

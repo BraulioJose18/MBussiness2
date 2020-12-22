@@ -4,6 +4,7 @@ import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.Article
 
 class ArticleRepository : FirestoreRepository<Article>(Article::class.java) {
+
     companion object {
         public const val NAME = "name"
         public const val UNITARY_PRICE = "unitaryPrice"
@@ -25,4 +26,6 @@ class ArticleRepository : FirestoreRepository<Article>(Article::class.java) {
         this.oderDescendingBy(query, UNITARY_PRICE)
 
     // FALTA LLAMADAS A LAS RELACIONES EMBEBIDAS
+
+
 }
