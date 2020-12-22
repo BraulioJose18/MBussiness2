@@ -16,7 +16,7 @@
         android:layout_marginEnd="80dp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Criterio de Búsqueda"
+        android:hint="Criteri de Búsqueda"
         android:inputType="textPersonName"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,31 +53,31 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUnit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/view_unit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addUnit" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/view_unit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/border_filter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/almacen_opciones_filtrado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/almacen_opciones_filtrado"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         android:background="@color/white"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/title_ordenar"
@@ -167,36 +167,36 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="8dp"
         android:text="FILTROS"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.563"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_unit" />
 
     <ImageView
         android:id="@+id/arrowUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:alpha="1"
         android:background="@drawable/ic_arrow_top"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView" />
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/view_unit" />
 
     <ImageView
         android:id="@+id/arrowDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:alpha="0"
         android:background="@drawable/ic_arrow_down"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView" />
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/view_unit" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
