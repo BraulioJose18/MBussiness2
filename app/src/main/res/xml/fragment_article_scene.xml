@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetEnd="@layout/fragment_brand_motion_end"
-        app:constraintSetStart="@+id/fragment_brand_motion_start">
+        app:constraintSetEnd="@layout/fragment_article_motion_end"
+        app:constraintSetStart="@+id/fragment_article_motion_start">
 
         <OnSwipe
             app:touchAnchorSide="bottom"
