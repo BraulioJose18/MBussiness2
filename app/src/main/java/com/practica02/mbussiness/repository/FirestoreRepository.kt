@@ -12,7 +12,7 @@ abstract class FirestoreRepository<E : DatabaseRegistry<String, Char>>(
 ) : CrudRepository<String, E>, RequirementsRepository {
 
     companion object {
-        public const val REGISTRY_STATE = "registryState"
+        const val REGISTRY_STATE = "registryState"
     }
 
     private val collection: CollectionReference =
@@ -22,10 +22,10 @@ abstract class FirestoreRepository<E : DatabaseRegistry<String, Char>>(
         this.collection.document().set(entity)
 
     override fun update(entity: E): Task<Void> =
-        this.collection.document(entity.identifier).set(entity)
+        this.collection.document(entity.identifier!!).set(entity)
 
     override fun delete(entity: E): Task<Void> =
-        this.collection.document(entity.identifier).delete()
+        this.collection.document(entity.identifier!!).delete()
 
     override fun findById(identifier: String): DocumentReference =
         this.collection.document(identifier)
