@@ -6,9 +6,16 @@ import org.mapstruct.InheritInverseConfiguration
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings
+import org.mapstruct.factory.Mappers
 
 @Mapper(uses = [BrandMapper::class, UnitOfMeasurementMapper::class])
 interface ArticleMapper : GenericMapper<Article, ArticleDTO> {
+
+    companion object {
+        @JvmStatic
+        val mapper: ArticleMapper = Mappers.getMapper(ArticleMapper::class.java)
+    }
+
     @Mappings(
         value = [
             Mapping(target = "identifier", source = "entity.identifier"),

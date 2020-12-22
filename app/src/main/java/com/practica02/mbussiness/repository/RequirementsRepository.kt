@@ -5,9 +5,9 @@ import com.google.firebase.firestore.Query
 interface RequirementsRepository {
 
     companion object {
-        public const val ACTIVE: String = "A"
-        public const val INACTIVE: String = "I"
-        public const val ELIMINATED: String = "*"
+        const val ACTIVE: String = "A"
+        const val INACTIVE: String = "I"
+        const val ELIMINATED: String = "*"
     }
 
     // Filters
