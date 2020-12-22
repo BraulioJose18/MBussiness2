@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.practica02.mbussiness.R;
 import com.practica02.mbussiness.adapters.BrandAdapter;
 import com.practica02.mbussiness.dialogs.brand.BrandAddDialog;
+import com.practica02.mbussiness.dialogs.brand.BrandDeleteDialog;
 import com.practica02.mbussiness.dialogs.brand.BrandModifyDialog;
 import com.practica02.mbussiness.dialogs.brand.BrandViewDialog;
 import com.practica02.mbussiness.model.dto.BrandDTO;
@@ -33,9 +37,16 @@ public class BrandFragment extends Fragment {
     private BrandViewModel brandViewModel;
     private BrandAdapter brandAdapter;
 
+    //Spinner
+    private Spinner fieldBrand, orderBrand;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_brand, container, false);
+
+        this.fieldBrand = view.findViewById(R.id.field_brand);
+        this.orderBrand = view.findViewById(R.id.order_brand);
+
         this.recyclerViewBrand = view.findViewById(R.id.rvBrand);
         this.btnAddBrand = view.findViewById(R.id.addBrand);
         this.editSearch = view.findViewById(R.id.editSearchBrand);
@@ -43,7 +54,7 @@ public class BrandFragment extends Fragment {
         this.brandViewModel = new ViewModelProvider(this).get(BrandViewModel.class);
         this.brandAdapter.setViewListener(data -> createViewDialog(BrandMapper.getMapper().entityToDto(data)));
         this.brandAdapter.setModifyListener(data -> createModifyDialog(BrandMapper.getMapper().entityToDto(data)));
-        this.brandAdapter.setDeleteListener(data -> brandViewModel.delete(data));
+        this.brandAdapter.setDeleteListener(data -> createDeleteDialog(BrandMapper.getMapper().entityToDto(data)));
         this.btnAddBrand.setOnClickListener(v -> createAddDialog());
         this.recyclerViewBrand.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewBrand.setAdapter(this.brandAdapter);
@@ -51,7 +62,19 @@ public class BrandFragment extends Fragment {
             brandAdapter.setBrand(brands);
             brandAdapter.notifyDataSetChanged();
         });
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.filtro_brand_unit, android.R.layout.simple_spinner_item);
+        fieldBrand.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.orden, android.R.layout.simple_spinner_item);
+        orderBrand.setAdapter(adapter2);
+
+
         return view;
+    }
+
+    private void createDeleteDialog(BrandDTO dto) {
+        BrandDeleteDialog viewDialog = new BrandDeleteDialog(dto);
+        viewDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 
     private void createModifyDialog(BrandDTO dto) {
