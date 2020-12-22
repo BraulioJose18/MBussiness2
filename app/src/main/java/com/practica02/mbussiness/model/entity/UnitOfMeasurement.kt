@@ -5,4 +5,7 @@ class UnitOfMeasurement(
     public val name: String = "",
     registryState: String = "A"
 ) : DatabaseRegistry(identifier, registryState) {
+    override fun toString(): String {
+        return "UnitOfMeasurment(name='$name') ${super.toString()}"
+    }
 }
