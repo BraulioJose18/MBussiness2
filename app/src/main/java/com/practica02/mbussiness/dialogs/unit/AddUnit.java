@@ -1,4 +1,4 @@
-package com.practica02.mbussiness.dialogs.brand;
+package com.practica02.mbussiness.dialogs.unit;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,20 +14,20 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.practica02.mbussiness.R;
 
-public class AddBrand extends AppCompatDialogFragment {
+public class AddUnit extends AppCompatDialogFragment {
     private EditText code, name;
     Spinner spinnerEstado;
 
     @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstaceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_brand, null);
-        code = view.findViewById(R.id.code);
-        name = view.findViewById(R.id.name);
-        spinnerEstado = view.findViewById(R.id.spinnerEstado);
+        View view = inflater.inflate(R.layout.dialog_unit, null);
+        code = view.findViewById(R.id.codeUnidad);
+        name = view.findViewById(R.id.nameUnidad);
+        spinnerEstado = view.findViewById(R.id.spinnerEstadoUnidad);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.combo_status, android.R.layout.simple_spinner_item);
         spinnerEstado.setAdapter(adapter);

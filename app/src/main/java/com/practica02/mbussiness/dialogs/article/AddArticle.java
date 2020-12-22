@@ -1,4 +1,4 @@
-package com.practica02.mbussiness.dialogs.brand;
+package com.practica02.mbussiness.dialogs.article;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,20 +14,21 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.practica02.mbussiness.R;
 
-public class AddBrand extends AppCompatDialogFragment {
+public class AddArticle extends AppCompatDialogFragment {
     private EditText code, name;
-    Spinner spinnerEstado;
+    Spinner spinnerUnidadMedida, spinnerEstado;
 
     @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_brand, null);
-        code = view.findViewById(R.id.code);
-        name = view.findViewById(R.id.name);
-        spinnerEstado = view.findViewById(R.id.spinnerEstado);
+        View view = inflater.inflate(R.layout.dialog_article, null);
+        code = view.findViewById(R.id.codeArticulo);
+        name = view.findViewById(R.id.nameArticulo);
+        //spinnerUnidadMedida = view.findViewById(R.id.spinnerUnidadMedida); //goes?
+        spinnerEstado = view.findViewById(R.id.spinnerEstadoArticulo);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.combo_status, android.R.layout.simple_spinner_item);
         spinnerEstado.setAdapter(adapter);
@@ -40,8 +41,8 @@ public class AddBrand extends AppCompatDialogFragment {
                     String registryState = "";
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {
-                });
 
+                });
         return builder.create();
     }
 
