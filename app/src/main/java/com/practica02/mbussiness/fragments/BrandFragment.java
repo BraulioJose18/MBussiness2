@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,9 +37,16 @@ public class BrandFragment extends Fragment {
     private BrandViewModel brandViewModel;
     private BrandAdapter brandAdapter;
 
+    //Spinner
+    private Spinner fieldBrand, orderBrand;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_brand, container, false);
+
+        this.fieldBrand = view.findViewById(R.id.field_brand);
+        this.orderBrand = view.findViewById(R.id.order_brand);
+
         this.recyclerViewBrand = view.findViewById(R.id.rvBrand);
         this.btnAddBrand = view.findViewById(R.id.addBrand);
         this.editSearch = view.findViewById(R.id.editSearchBrand);
@@ -52,6 +62,13 @@ public class BrandFragment extends Fragment {
             brandAdapter.setBrand(brands);
             brandAdapter.notifyDataSetChanged();
         });
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.filtro_brand_unit, android.R.layout.simple_spinner_item);
+        fieldBrand.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.orden, android.R.layout.simple_spinner_item);
+        orderBrand.setAdapter(adapter2);
+
+
         return view;
     }
 

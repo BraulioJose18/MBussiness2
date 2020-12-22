@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="filtro_article">
+        <item>Nombre</item>
+        <item>Estado de Registro</item>
+        <item>Precio Unitario</item>
+    </string-array>
+
+</resources>
