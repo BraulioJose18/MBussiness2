@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MBussiness</string>
+    <string name="navigataion_drawer_open">Open</string>
+    <string name="navigataion_drawer_close">Close</string>
 </resources>
