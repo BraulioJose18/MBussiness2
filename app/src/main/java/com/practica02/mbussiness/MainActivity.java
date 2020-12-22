@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.practica02.mbussiness.fragments.BrandFragment;
 import com.practica02.mbussiness.fragments.FragmentArticle;
 import com.practica02.mbussiness.fragments.FragmentUnitOfMeasurement;
+import com.practica02.mbussiness.fragments.HelpMBusiness;
 import com.practica02.mbussiness.model.dto.BrandDTO;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -90,6 +91,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container, new BrandFragment());
             fragmentTransaction.commit();
             toolbar.setTitle("Marcas");
+        }
+        if(item.getItemId() == R.id.item4){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, new HelpMBusiness());
+            fragmentTransaction.commit();
+            toolbar.setTitle("Ayuda/Información");
         }
 
         return false;

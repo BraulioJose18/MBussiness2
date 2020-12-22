@@ -2,4 +2,19 @@
     <string name="app_name">MBussiness</string>
     <string name="navigataion_drawer_open">Open</string>
     <string name="navigataion_drawer_close">Close</string>
+
+    <!-- Strings del fragment help -->
+    <string name="menu_icon">Icono de Menú, al presionar sobre este icono se desplegará un menú lateral</string>
+    <string name="unidad_icon">Icono de la Unidad de Medida, al presionar sobre este icono se mostrarán los "documentos" de toda la "colección" de Unidad de Medida</string>
+    <string name="articulos_icon">Icono de Maestro Artículos, al presionar sobre este icono se mostrarán los "documentos" de toda la "colección" de Maestro Artículos</string>
+    <string name="marca_icon">Icono de Marcas, al presionar sobre este icono se mostrarán los "documentos" de toda la "colección" de Marcas</string>
+    <string name="search_icon">Icono de Búsqueda, al presionar sobre este icono se realizarán las búsquedas dentro de la "colección" en la que se encuentre actualmente</string>
+    <!--Descripción de filtros-->
+    <string name="filtros_des">En el sección de Filtros podremos escoger las opciones por las cuales querramos mostrar los datos.
+    </string>
+    <!--Descripción de botones-->
+    <string name="add_button_des">El botón Añadir permite crear un nuevo "documento" dependiendo de la colección donde se encuentre.</string>
+    <string name="edit_button_des">El botón Editar permite editar los datos de un "documento" que se haya seleccionado. </string>
+    <string name="view_button_des">El botón Ver permite visualizar los datos de un "documento" que se haya seleccionado. </string>
+    <string name="delete_button_des">El botón Eliminar permite cambiar el estado del "documento" seleccionado a INACTIVO (*).</string>
 </resources>
