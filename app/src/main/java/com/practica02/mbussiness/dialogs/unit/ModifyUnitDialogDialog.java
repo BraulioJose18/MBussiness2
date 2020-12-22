@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
 
-public class ModifyUnit extends ViewUnit{
+public class ModifyUnitDialogDialog extends ViewUnitDialog {
 
-    public ModifyUnit(UnitOfMeasurementDTO unitDTO){
+    public ModifyUnitDialogDialog(UnitOfMeasurementDTO unitDTO){
         super(unitDTO);
     }
 
@@ -18,7 +18,7 @@ public class ModifyUnit extends ViewUnit{
         this.spinnerRegistryState.setEnabled(true);
         builder.setTitle("Modificar Unidad")
                 .setPositiveButton("Modificar", (dialog, which) -> {
-                    //this.unit.setName(this.name.getText().toString());
+                    this.unit.setName(this.name.getText().toString());
                     this.unit.setRegistryState(getRegistryStateFromSpinner());
                     this.UnitOfMeasurementViewModel.update(UnitOfMeasurementMapper.getMapper().dtoToEntity(unit));
                 })
