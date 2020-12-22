@@ -4,7 +4,7 @@ import com.google.firebase.firestore.Exclude
 
 data class UnitOfMeasurementDTO(
     @get:Exclude
-    override val identifier: String,
+    override val identifier: String? = null,
     val name: String,
     override val registryState: String,
 ) : DatabaseRegistryDTO(identifier, registryState)

@@ -4,12 +4,12 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.*
 
-open class MultipleDocumentReference<E, out L : Query>(
+open class MultipleDocumentReferenceLiveData<E, out L : Query>(
     private val multipleReference: L,
     private val entityClass: Class<E>,
 ) : MutableLiveData<List<E>>(), EventListener<QuerySnapshot> {
 
-    private val tag: String = MultipleDocumentReference::class.simpleName!!
+    private val tag: String = MultipleDocumentReferenceLiveData::class.simpleName!!
     private lateinit var listener: ListenerRegistration
 
     override fun onActive() {

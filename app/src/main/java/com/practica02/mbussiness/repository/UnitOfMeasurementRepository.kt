@@ -7,13 +7,12 @@ class UnitOfMeasurementRepository private constructor() :
     FirestoreRepository<UnitOfMeasurement>(UnitOfMeasurement::class.java) {
 
     companion object {
-        public val instance: UnitOfMeasurementRepository = UnitOfMeasurementRepository()
-        public const val NAME = "name"
+        val instance: UnitOfMeasurementRepository by lazy { UnitOfMeasurementRepository() }
+        private const val NAME = "name"
+        fun filterByName(query: Query, value: String): Query =
+            instance.filterByFieldValue(query, UnitOfMeasurementRepository.NAME, value)
+
+        fun orderAscendingByName(query: Query): Query =
+            instance.oderAscendingBy(query, UnitOfMeasurementRepository.NAME)
     }
-
-    fun filterByName(query: Query, value: String): Query =
-        this.filterByFieldValue(query, ArticleRepository.NAME, value)
-
-    fun orderAscendingByName(query: Query): Query =
-        this.oderAscendingBy(query, ArticleRepository.NAME)
 }
