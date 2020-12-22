@@ -12,7 +12,10 @@ class BrandRepository private constructor() : FirestoreRepository<Brand>(Brand::
             FirestoreRepository.Companion.filterByFieldValue(query, BrandRepository.NAME, value)
 
         fun orderAscendingByName(query: Query): Query =
-            FirestoreRepository.Companion.oderAscendingBy(query, BrandRepository.NAME)
+            FirestoreRepository.Companion.orderAscendingBy(query, BrandRepository.NAME)
+
+        fun orderDescendingByName(query: Query): Query =
+            FirestoreRepository.Companion.orderDescendingBy(query, BrandRepository.NAME)
     }
 
 
