@@ -11,18 +11,18 @@ class ArticleRepository private constructor() : FirestoreRepository<Article>(Art
         private const val UNITARY_PRICE = "unitaryPrice"
 
         fun filterByName(query: Query, value: String): Query =
-            instance.filterByFieldValue(query, ArticleRepository.NAME, value)
+            FirestoreRepository.Companion.filterByFieldValue(query, ArticleRepository.NAME, value)
 
         fun orderAscendingByName(query: Query): Query =
-            instance.oderAscendingBy(query, ArticleRepository.NAME)
+            FirestoreRepository.Companion.oderAscendingBy(query, ArticleRepository.NAME)
 
         fun orderDescendingByName(query: Query): Query =
-            instance.oderDescendingBy(query, ArticleRepository.NAME)
+            FirestoreRepository.Companion.oderDescendingBy(query, ArticleRepository.NAME)
 
         fun orderAscendingByUnitaryPrice(query: Query): Query =
-            instance.oderAscendingBy(query, ArticleRepository.UNITARY_PRICE)
+            FirestoreRepository.Companion.oderAscendingBy(query, ArticleRepository.UNITARY_PRICE)
 
         fun orderDescendingByUnitaryPrice(query: Query): Query =
-            instance.oderDescendingBy(query, ArticleRepository.UNITARY_PRICE)
+            FirestoreRepository.Companion.oderDescendingBy(query, ArticleRepository.UNITARY_PRICE)
     }
 }
