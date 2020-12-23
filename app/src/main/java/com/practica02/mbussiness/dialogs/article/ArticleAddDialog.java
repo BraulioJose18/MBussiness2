@@ -1,7 +1,6 @@
 package com.practica02.mbussiness.dialogs.article;
 
 import android.app.AlertDialog;
-import android.util.Log;
 import com.practica02.mbussiness.model.dto.ArticleDTO;
 import com.practica02.mbussiness.model.entity.Brand;
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement;
@@ -19,8 +18,6 @@ public class ArticleAddDialog extends ArticleDialog {
                     Brand brand = this.brandSpinnerAdapter.getBrands().get(spinnerBrand.getSelectedItemPosition());
                     UnitOfMeasurement unitOfMeasurement = this.unitOfMeasurementSpinnerAdapter.getUnitOfMeasurements().get(spinnerUnitMeasurement.getSelectedItemPosition());
                     ArticleDTO dto = new ArticleDTO("", this.name.getText().toString(), this.unitaryPrice.getText().toString(), registryState, brand.getIdentifier(), unitOfMeasurement.getIdentifier());
-                    Log.e(TAG, dto.toString());
-                    Log.e(TAG, ArticleMapper.getMapper().dtoToEntity(dto).toString());
                     this.articleViewModel.save(ArticleMapper.getMapper().dtoToEntity(dto));
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {

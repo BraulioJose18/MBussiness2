@@ -5,8 +5,8 @@ data class ArticleDTO(
     var name: String,
     var unitaryPrice: String,
     override var registryState: String,
-    val brandId: String,
-    val unitOfMeasurementId: String
+    var brandId: String,
+    var unitOfMeasurementId: String
 ) : DatabaseRegistryDTO(identifier, registryState) {
 
     lateinit var brand: BrandDTO
@@ -25,4 +25,10 @@ data class ArticleDTO(
         this.brand = brandDTO
         this.unitOfMeasurement = unitOfMeasurementDTO
     }
+
+    override fun toString(): String {
+        return "ArticleDTO(identifier='$identifier', name='$name', unitaryPrice='$unitaryPrice', registryState='$registryState', brandId='$brandId', unitOfMeasurementId='$unitOfMeasurementId')"
+    }
+
+
 }

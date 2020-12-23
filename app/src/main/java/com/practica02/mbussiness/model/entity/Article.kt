@@ -9,4 +9,8 @@ class Article(
     val unitOfMeasurementId: String = ""
 ) : DatabaseRegistry(
     identifier, registryState
-)
+){
+    override fun toString(): String {
+        return "Article(name='$name', unitaryPrice=$unitaryPrice, brandId='$brandId', unitOfMeasurementId='$unitOfMeasurementId') ${super.toString()}"
+    }
+}

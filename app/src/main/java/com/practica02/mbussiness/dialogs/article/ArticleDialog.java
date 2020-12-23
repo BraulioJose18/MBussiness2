@@ -65,8 +65,10 @@ public abstract class ArticleDialog extends AppCompatDialogFragment {
                 R.array.combo_status,
                 android.R.layout.simple_spinner_item);
         this.spinnerRegistryState.setAdapter(registryStateAdapter);
+
         this.spinnerBrand.setAdapter(brandSpinnerAdapter);
         this.spinnerUnitMeasurement.setAdapter(unitOfMeasurementSpinnerAdapter);
+
         this.brandViewModel.getActiveBrandLiveData().observe(this, brands -> {
             this.brandSpinnerAdapter.setBrands(brands);
             this.brandSpinnerAdapter.notifyDataSetChanged();

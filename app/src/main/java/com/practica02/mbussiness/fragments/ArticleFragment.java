@@ -186,6 +186,15 @@ public class ArticleFragment extends Fragment {
                     Log.e(TAG, "Filter DESC");
                     this.filterResultQuery = FirestoreRepository.Companion.orderDescendingByRegistryState(this.filterResultQuery);
                 }
+            } else if (fieldArticle.getSelectedItem().toString().equalsIgnoreCase("Precio Unitario")) {
+                Log.e(TAG, "Filter PrecioUnitario");
+                if (orderArticle.getSelectedItem().toString().equalsIgnoreCase("Ascendente")) {
+                    Log.e(TAG, "Filter ASC");
+                    this.filterResultQuery = ArticleRepository.Companion.orderAscendingByUnitaryPrice(this.filterResultQuery);
+                } else if (orderArticle.getSelectedItem().toString().equalsIgnoreCase("Descendente")) {
+                    Log.e(TAG, "Filter DESC");
+                    this.filterResultQuery = ArticleRepository.Companion.orderDescendingByUnitaryPrice(this.filterResultQuery);
+                }
             }
             this.cleanResults();
             Log.e(TAG, "Add New Resource");
