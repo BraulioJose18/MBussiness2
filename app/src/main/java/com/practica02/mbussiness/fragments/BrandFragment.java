@@ -24,6 +24,7 @@ import com.practica02.mbussiness.dialogs.brand.BrandDeleteDialog;
 import com.practica02.mbussiness.dialogs.brand.BrandModifyDialog;
 import com.practica02.mbussiness.dialogs.brand.BrandViewDialog;
 import com.practica02.mbussiness.model.dto.BrandDTO;
+import com.practica02.mbussiness.model.entity.Article;
 import com.practica02.mbussiness.model.entity.Brand;
 import com.practica02.mbussiness.model.mapper.BrandMapper;
 import com.practica02.mbussiness.repository.BrandRepository;
@@ -53,6 +54,7 @@ public class BrandFragment extends Fragment {
     private Query filterResultQuery;
     private MediatorLiveData<List<? extends Brand>> resultLiveData;
     private MultipleDocumentReferenceLiveData<Brand, ?> allLiveData;
+    private MultipleDocumentReferenceLiveData<Brand, ?> activeLiveData;
     private MultipleDocumentReferenceLiveData<Brand, ?> liveDataByRegistry;
     private MultipleDocumentReferenceLiveData<Brand, ?> liveDataByName;
     private MultipleDocumentReferenceLiveData<Brand, ?> filterLiveData;
@@ -104,8 +106,16 @@ public class BrandFragment extends Fragment {
         this.recyclerViewBrand.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewBrand.setAdapter(this.brandAdapter);
 
+        //=====================================
+        this.activeLiveData = this.brandViewModel.getActiveBrandLiveData();
+        this.resultLiveData.addSource(this.activeLiveData, brands -> resultLiveData.setValue(brands));
+        this.active.setChecked(true);
+//=====================================
+//        this.allLiveData = this.articleViewModel.getAllArticleLiveData();
+//        this.resultLiveData.addSource(this.allLiveData, articles -> resultLiveData.setValue(articles));
+
         this.allLiveData = this.brandViewModel.getAllBrandLiveData();
-        this.resultLiveData.addSource(this.allLiveData, brands -> resultLiveData.setValue(brands));
+       // this.resultLiveData.addSource(this.allLiveData, brands -> resultLiveData.setValue(brands));
 
         this.editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -213,6 +223,9 @@ public class BrandFragment extends Fragment {
         }
         if (this.filterLiveData != null) {
             this.resultLiveData.removeSource(this.filterLiveData);
+        }
+        if (this.activeLiveData != null) {
+            this.resultLiveData.removeSource(this.activeLiveData);
         }
         this.resultLiveData.setValue(new ArrayList<>());
     }

@@ -30,6 +30,7 @@ import com.practica02.mbussiness.dialogs.unit.UnitDeleteDialog;
 import com.practica02.mbussiness.dialogs.unit.UnitModifyDialog;
 import com.practica02.mbussiness.dialogs.unit.UnitViewDialog;
 import com.practica02.mbussiness.model.dto.UnitOfMeasurementDTO;
+import com.practica02.mbussiness.model.entity.Brand;
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement;
 import com.practica02.mbussiness.model.mapper.UnitOfMeasurementMapper;
 import com.practica02.mbussiness.repository.UnitOfMeasurementRepository;
@@ -65,6 +66,7 @@ public class FragmentUnitOfMeasurement extends Fragment {
     private Query filterResultQuery;
     private MediatorLiveData<List<? extends UnitOfMeasurement>> resultLiveData;
     private MultipleDocumentReferenceLiveData<UnitOfMeasurement, ?> allLiveData;
+    private MultipleDocumentReferenceLiveData<UnitOfMeasurement, ?> activeLiveData;
     private MultipleDocumentReferenceLiveData<UnitOfMeasurement, ?> liveDataByRegistry;
     private MultipleDocumentReferenceLiveData<UnitOfMeasurement, ?> liveDataByName;
     private MultipleDocumentReferenceLiveData<UnitOfMeasurement, ?> filterLiveData;
@@ -106,8 +108,12 @@ public class FragmentUnitOfMeasurement extends Fragment {
         this.recyclerViewUnit.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewUnit.setAdapter(this.unitAdapter);
 
+        this.activeLiveData = this.unitViewModel.getActiveUnitLiveData();
+        this.resultLiveData.addSource(this.activeLiveData, brands -> resultLiveData.setValue(brands));
+        this.active.setChecked(true);
+
         this.allLiveData = this.unitViewModel.getAllUnitLiveData();
-        this.resultLiveData.addSource(allLiveData, units -> resultLiveData.setValue(units));
+        //this.resultLiveData.addSource(allLiveData, units -> resultLiveData.setValue(units));
 
         this.editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -210,16 +216,19 @@ public class FragmentUnitOfMeasurement extends Fragment {
     }
 
     private void cleanResults() {
-        Log.e(TAG, "Remove principal resource");
+        Log.e(TAG, "Remove all resources");
         if (this.allLiveData != null) {
             this.resultLiveData.removeSource(this.allLiveData);
         }
-        if (liveDataByName != null && liveDataByRegistry != null) {
+        if (this.liveDataByName != null && this.liveDataByRegistry != null) {
             this.resultLiveData.removeSource(this.liveDataByName);
             this.resultLiveData.removeSource(this.liveDataByRegistry);
         }
         if (this.filterLiveData != null) {
             this.resultLiveData.removeSource(this.filterLiveData);
+        }
+        if (this.activeLiveData != null) {
+            this.resultLiveData.removeSource(this.activeLiveData);
         }
         this.resultLiveData.setValue(new ArrayList<>());
     }

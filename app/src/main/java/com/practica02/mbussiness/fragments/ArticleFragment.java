@@ -112,7 +112,7 @@ public class ArticleFragment extends Fragment {
         this.resultLiveData.addSource(this.activeLiveData, articles -> resultLiveData.setValue(articles));
         this.active.setChecked(true);
 //=====================================
-//        this.allLiveData = this.articleViewModel.getAllArticleLiveData();
+        this.allLiveData = this.articleViewModel.getAllArticleLiveData();
 //        this.resultLiveData.addSource(this.allLiveData, articles -> resultLiveData.setValue(articles));
 
         this.editSearch.addTextChangedListener(new TextWatcher() {
