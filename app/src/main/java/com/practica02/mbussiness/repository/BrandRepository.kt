@@ -9,13 +9,13 @@ class BrandRepository private constructor() : FirestoreRepository<Brand>(Brand::
         val instance: BrandRepository by lazy { BrandRepository() }
         private const val NAME = "name"
         fun filterByName(query: Query, value: String): Query =
-            FirestoreRepository.Companion.filterByFieldValue(query, BrandRepository.NAME, value)
+            FirestoreRepository.filterByFieldValue(query, BrandRepository.NAME, value)
 
         fun orderAscendingByName(query: Query): Query =
-            FirestoreRepository.Companion.orderAscendingBy(query, BrandRepository.NAME)
+            FirestoreRepository.orderAscendingBy(query, BrandRepository.NAME)
 
         fun orderDescendingByName(query: Query): Query =
-            FirestoreRepository.Companion.orderDescendingBy(query, BrandRepository.NAME)
+            FirestoreRepository.orderDescendingBy(query, BrandRepository.NAME)
     }
 
 

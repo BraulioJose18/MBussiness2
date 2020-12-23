@@ -10,13 +10,13 @@ class UnitOfMeasurementRepository private constructor() :
         val instance: UnitOfMeasurementRepository by lazy { UnitOfMeasurementRepository() }
         private const val NAME = "name"
         fun filterByName(query: Query, value: String): Query =
-            FirestoreRepository.Companion.filterByFieldValue(query, UnitOfMeasurementRepository.NAME, value)
+            FirestoreRepository.filterByFieldValue(query, UnitOfMeasurementRepository.NAME, value)
 
         fun orderAscendingByName(query: Query): Query =
-            FirestoreRepository.Companion.orderAscendingBy(query, UnitOfMeasurementRepository.NAME)
+            FirestoreRepository.orderAscendingBy(query, UnitOfMeasurementRepository.NAME)
 
         fun orderDescendingByName(query: Query): Query =
-            FirestoreRepository.Companion.orderDescendingBy(query, UnitOfMeasurementRepository.NAME)
+            FirestoreRepository.orderDescendingBy(query, UnitOfMeasurementRepository.NAME)
 
     }
 }

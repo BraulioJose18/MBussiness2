@@ -4,8 +4,8 @@ import com.google.firebase.firestore.Exclude
 
 abstract class DatabaseRegistry(
     @get:Exclude
-    public open var identifier: String,
-    public open val registryState: String
+    open var identifier: String,
+    open val registryState: String
 ) {
     override fun toString(): String {
         return "DatabaseRegistry(identifier='$identifier', registryState='$registryState')"
