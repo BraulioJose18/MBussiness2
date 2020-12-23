@@ -103,7 +103,7 @@
             android:padding="10dp">
 
             <Spinner
-                android:id="@+id/tipo_dato_article"
+                android:id="@+id/field_article"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -111,7 +111,7 @@
                 android:layout_weight="1" />
 
             <Spinner
-                android:id="@+id/asc_desc_article"
+                android:id="@+id/order_article"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -137,21 +137,21 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/check_activo_article"
+                android:id="@+id/check_active_article"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Activo" />
 
             <CheckBox
-                android:id="@+id/check_inactivo_article"
+                android:id="@+id/check_inactive_article"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Inactivo" />
 
             <CheckBox
-                android:id="@+id/check_eliminado_article"
+                android:id="@+id/check_eliminated_article"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -159,7 +159,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/filtrarArticle"
+            android:id="@+id/btn_filter_article"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"

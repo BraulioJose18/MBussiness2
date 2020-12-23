@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.UnitOfMeasurement
+import com.practica02.mbussiness.repository.FirestoreRepository
+import com.practica02.mbussiness.repository.RequirementsRepository
 import com.practica02.mbussiness.repository.UnitOfMeasurementRepository
 import com.practica02.mbussiness.repository.liveData.DocumentReferenceLiveData
 import com.practica02.mbussiness.repository.liveData.MultipleDocumentReferenceLiveData
@@ -15,6 +17,13 @@ class UnitOfMeasurementViewModel : ViewModel() {
     val allUnitLiveData: MultipleDocumentReferenceLiveData<UnitOfMeasurement, Query> by lazy {
         MultipleDocumentReferenceLiveData(
             this.repository.findAll(),
+            UnitOfMeasurement::class.java
+        )
+    }
+
+    val activeUnitLiveData: MultipleDocumentReferenceLiveData<UnitOfMeasurement, Query> by lazy {
+        MultipleDocumentReferenceLiveData(
+            FirestoreRepository.filterByRegistryState(this.repository.findAll(), RequirementsRepository.ACTIVE),
             UnitOfMeasurement::class.java
         )
     }

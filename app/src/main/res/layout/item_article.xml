@@ -44,7 +44,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/codMaestroArticulo"
+                    android:id="@+id/idArticle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -69,7 +69,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/nombreMaestroArticulo"
+                    android:id="@+id/nameArticle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -120,7 +120,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/precioUnitarioMaestroArticulo"
+                    android:id="@+id/unitaryPriceArticle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -171,7 +171,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/statusMaestroArticulo"
+                    android:id="@+id/registryStateArticle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -187,7 +187,7 @@
                 android:layout_marginTop="15dp">
 
                 <Button
-                    android:id="@+id/bVerArticulo"
+                    android:id="@+id/bViewArticle"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_weight="1"
@@ -199,7 +199,7 @@
                     android:layout_marginEnd="10dp"/>
 
                 <Button
-                    android:id="@+id/bModificarArticulo"
+                    android:id="@+id/bModifyArticle"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_weight="1"
@@ -211,7 +211,7 @@
                     android:layout_marginEnd="10dp"/>
 
                 <Button
-                    android:id="@+id/bEliminarArticulo"
+                    android:id="@+id/bDeleteArticle"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"

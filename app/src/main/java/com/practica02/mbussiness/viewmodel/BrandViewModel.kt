@@ -5,6 +5,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.Brand
 import com.practica02.mbussiness.repository.BrandRepository
+import com.practica02.mbussiness.repository.FirestoreRepository
+import com.practica02.mbussiness.repository.RequirementsRepository
 import com.practica02.mbussiness.repository.liveData.DocumentReferenceLiveData
 import com.practica02.mbussiness.repository.liveData.MultipleDocumentReferenceLiveData
 
@@ -15,6 +17,13 @@ class BrandViewModel : ViewModel() {
     val allBrandLiveData: MultipleDocumentReferenceLiveData<Brand, Query> by lazy {
         MultipleDocumentReferenceLiveData(
             this.repository.findAll(),
+            Brand::class.java
+        )
+    }
+
+    val activeBrandLiveData: MultipleDocumentReferenceLiveData<Brand, Query> by lazy {
+        MultipleDocumentReferenceLiveData(
+            FirestoreRepository.filterByRegistryState(this.repository.findAll(), RequirementsRepository.ACTIVE),
             Brand::class.java
         )
     }

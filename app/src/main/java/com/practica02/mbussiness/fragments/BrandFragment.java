@@ -45,7 +45,6 @@ public class BrandFragment extends Fragment {
     private BrandAdapter brandAdapter;
     //Filter Components
     private Spinner fieldBrand, orderBrand;
-    private List<String> fieldOptions, orderOptions;
     private CheckBox active, inactive, eliminated;
     private Button btnFilter;
 
@@ -77,8 +76,6 @@ public class BrandFragment extends Fragment {
 
         ArrayAdapter<CharSequence> fieldAdapter = ArrayAdapter.createFromResource(getContext(), R.array.filtro_brand_unit, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> orderAdapter = ArrayAdapter.createFromResource(getContext(), R.array.orden, android.R.layout.simple_spinner_item);
-        this.fieldOptions = Arrays.asList(Objects.requireNonNull(this.getContext()).getResources().getStringArray(R.array.filtro_brand_unit).clone());
-        this.orderOptions = Arrays.asList(Objects.requireNonNull(this.getContext()).getResources().getStringArray(R.array.orden).clone());
 
         this.fieldBrand.setAdapter(fieldAdapter);
         this.orderBrand.setAdapter(orderAdapter);
@@ -195,6 +192,9 @@ public class BrandFragment extends Fragment {
 
         this.resultLiveData.observe(this, brands -> {
             Log.e(TAG, "Updating UI");
+            for (Brand brand : brands) {
+                Log.e(TAG, brand.toString());
+            }
             brandAdapter.setBrand(brands);
             brandAdapter.notifyDataSetChanged();
         });
@@ -207,7 +207,7 @@ public class BrandFragment extends Fragment {
         if (this.allLiveData != null) {
             this.resultLiveData.removeSource(this.allLiveData);
         }
-        if (liveDataByName != null && liveDataByRegistry != null) {
+        if (this.liveDataByName != null && this.liveDataByRegistry != null) {
             this.resultLiveData.removeSource(this.liveDataByName);
             this.resultLiveData.removeSource(this.liveDataByRegistry);
         }
@@ -219,28 +219,28 @@ public class BrandFragment extends Fragment {
 
     private void createDeleteDialog(BrandDTO dto) {
         BrandDeleteDialog deleteDialog = new BrandDeleteDialog(dto);
-        deleteDialog.setOnPositiveEvent(v -> {
-            this.cleanResults();
-            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
-        });
+//        deleteDialog.setOnPositiveEvent(v -> {
+//            this.cleanResults();
+//            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
+//        });
         deleteDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 
     private void createModifyDialog(BrandDTO dto) {
         BrandModifyDialog modifyDialog = new BrandModifyDialog(dto);
-        modifyDialog.setOnPositiveEvent(v -> {
-            this.cleanResults();
-            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
-        });
+//        modifyDialog.setOnPositiveEvent(v -> {
+//            this.cleanResults();
+//            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
+//        });
         modifyDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 
     private void createAddDialog() {
         BrandAddDialog addDialog = new BrandAddDialog();
-        addDialog.setOnPositiveEvent(v -> {
-            this.cleanResults();
-            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
-        });
+//        addDialog.setOnPositiveEvent(v -> {
+//            this.cleanResults();
+//            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
+//        });
         addDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 

@@ -2,7 +2,7 @@ package com.practica02.mbussiness.model.entity
 
 class Brand(
     identifier: String = "",
-    public val name: String = "",
+    val name: String = "",
     registryState: String = ""
 ) : DatabaseRegistry(identifier, registryState) {
     override fun toString(): String {

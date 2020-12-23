@@ -11,17 +11,14 @@ class ArticleMapper private constructor() :
         val mapper: ArticleMapper = ArticleMapper()
     }
 
-    private val brandMapper: BrandMapper by lazy { BrandMapper.mapper }
-    private val unitOfMeasurementMapper: UnitOfMeasurementMapper by lazy { UnitOfMeasurementMapper.mapper }
-
     override fun entityToDto(entity: Article): ArticleDTO =
         ArticleDTO(
             entity.identifier,
             entity.name,
             entity.unitaryPrice.toString(),
             entity.registryState,
-            brandMapper.entityToDto(entity.brand),
-            unitOfMeasurementMapper.entityToDto(entity.unitOfMeasurement)
+            entity.brandId,
+            entity.unitOfMeasurementId
         )
 
 
@@ -31,8 +28,8 @@ class ArticleMapper private constructor() :
             dto.name,
             dto.unitaryPrice.toDouble(),
             dto.registryState,
-            brandMapper.dtoToEntity(dto.brand),
-            unitOfMeasurementMapper.dtoToEntity(dto.unitOfMeasurement)
+            dto.brandId,
+            dto.unitOfMeasurementId
         )
 
 }

@@ -40,9 +40,7 @@ public class ArticleDeleteDialog extends AppCompatDialogFragment {
                 .setTitle("¿Seguro que desea eliminar?")
                 .setPositiveButton("Confirmar", (dialog, which) -> {
                     this.article.setRegistryState(RequirementsRepository.ELIMINATED);
-                    this.articleViewModel.update(ArticleMapper.getMapper().dtoToEntity(article)).addOnCompleteListener(task -> {
-
-                    });
+                    this.articleViewModel.update(ArticleMapper.getMapper().dtoToEntity(article));
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {
                 });

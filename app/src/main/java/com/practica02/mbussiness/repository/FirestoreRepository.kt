@@ -16,6 +16,9 @@ abstract class FirestoreRepository<E : DatabaseRegistry>(
         override fun filterByRegistryStates(query: Query, values: List<String>): Query =
             query.whereIn(REGISTRY_STATE, values)
 
+        override fun filterByRegistryState(query: Query, value: String): Query =
+            query.whereEqualTo(REGISTRY_STATE, value)
+
         override fun filterByFieldValue(query: Query, field: String, value: String): Query =
             query.whereEqualTo(field, value)
 
@@ -30,9 +33,6 @@ abstract class FirestoreRepository<E : DatabaseRegistry>(
 
         override fun orderDescendingByRegistryState(query: Query): Query =
             query.orderBy(REGISTRY_STATE, Query.Direction.DESCENDING)
-
-        override fun filterByRegistryState(query: Query, value: String): Query =
-            query.whereEqualTo(REGISTRY_STATE, value)
 
     }
 
