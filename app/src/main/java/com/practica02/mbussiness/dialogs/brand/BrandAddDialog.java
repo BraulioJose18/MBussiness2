@@ -16,7 +16,11 @@ public class BrandAddDialog extends BrandDialog {
                     BrandDTO dto = new BrandDTO("", this.name.getText().toString(), registryState);
                     Log.e(TAG, dto.toString());
                     Log.e(TAG, BrandMapper.getMapper().dtoToEntity(dto).toString());
-                    this.brandViewModel.save(BrandMapper.getMapper().dtoToEntity(dto));
+                    this.brandViewModel.save(BrandMapper.getMapper().dtoToEntity(dto)).addOnCompleteListener(task -> {
+                        if (onPositiveEvent != null) {
+                            onPositiveEvent.onClick(getView());
+                        }
+                    });
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {
                 });

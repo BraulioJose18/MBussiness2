@@ -88,15 +88,27 @@ public class BrandFragment extends Fragment {
         this.filterResultQuery = this.brandViewModel.getBuilderQuery();
         this.resultLiveData = new MediatorLiveData<>();
 
-        this.brandAdapter.setViewListener(data -> createViewDialog(BrandMapper.getMapper().entityToDto(data)));
-        this.brandAdapter.setModifyListener(data -> createModifyDialog(BrandMapper.getMapper().entityToDto(data)));
-        this.brandAdapter.setDeleteListener(data -> createDeleteDialog(BrandMapper.getMapper().entityToDto(data)));
-        this.btnAddBrand.setOnClickListener(v -> createAddDialog());
+        this.brandAdapter.setViewListener(data -> {
+            createViewDialog(BrandMapper.getMapper().entityToDto(data));
+            this.brandAdapter.notifyDataSetChanged();
+        });
+        this.brandAdapter.setModifyListener(data -> {
+            createModifyDialog(BrandMapper.getMapper().entityToDto(data));
+            this.brandAdapter.notifyDataSetChanged();
+        });
+        this.brandAdapter.setDeleteListener(data -> {
+            createDeleteDialog(BrandMapper.getMapper().entityToDto(data));
+            this.brandAdapter.notifyDataSetChanged();
+        });
+        this.btnAddBrand.setOnClickListener(v -> {
+            createAddDialog();
+            this.brandAdapter.notifyDataSetChanged();
+        });
         this.recyclerViewBrand.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewBrand.setAdapter(this.brandAdapter);
 
         this.allLiveData = this.brandViewModel.getAllBrandLiveData();
-        this.resultLiveData.addSource(allLiveData, brands -> resultLiveData.setValue(brands));
+        this.resultLiveData.addSource(this.allLiveData, brands -> resultLiveData.setValue(brands));
 
         this.editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -178,12 +190,7 @@ public class BrandFragment extends Fragment {
             this.cleanResults();
             Log.e(TAG, "Add New Resource");
             this.filterLiveData = this.brandViewModel.queryLiveData(this.filterResultQuery);
-            this.resultLiveData.addSource(this.filterLiveData, brands -> {
-                List<Brand> brandList = new ArrayList<>(brands);
-                brandList.addAll(Objects.requireNonNull(this.resultLiveData.getValue()));
-                this.resultLiveData.setValue(brandList);
-            });
-
+            this.resultLiveData.addSource(this.filterLiveData, brands -> this.resultLiveData.setValue(brands));
         });
 
         this.resultLiveData.observe(this, brands -> {
@@ -196,7 +203,7 @@ public class BrandFragment extends Fragment {
     }
 
     private void cleanResults() {
-        Log.e(TAG, "Remove principal resource");
+        Log.e(TAG, "Remove all resources");
         if (this.allLiveData != null) {
             this.resultLiveData.removeSource(this.allLiveData);
         }
@@ -211,17 +218,29 @@ public class BrandFragment extends Fragment {
     }
 
     private void createDeleteDialog(BrandDTO dto) {
-        BrandDeleteDialog viewDialog = new BrandDeleteDialog(dto);
-        viewDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
+        BrandDeleteDialog deleteDialog = new BrandDeleteDialog(dto);
+        deleteDialog.setOnPositiveEvent(v -> {
+            this.cleanResults();
+            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
+        });
+        deleteDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 
     private void createModifyDialog(BrandDTO dto) {
-        BrandModifyDialog viewDialog = new BrandModifyDialog(dto);
-        viewDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
+        BrandModifyDialog modifyDialog = new BrandModifyDialog(dto);
+        modifyDialog.setOnPositiveEvent(v -> {
+            this.cleanResults();
+            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
+        });
+        modifyDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 
     private void createAddDialog() {
         BrandAddDialog addDialog = new BrandAddDialog();
+        addDialog.setOnPositiveEvent(v -> {
+            this.cleanResults();
+            this.resultLiveData.addSource(allLiveData, brands -> this.resultLiveData.setValue(brands));
+        });
         addDialog.show(Objects.requireNonNull(this.getFragmentManager()), TAG);
     }
 

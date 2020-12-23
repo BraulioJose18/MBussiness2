@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,6 +27,8 @@ public abstract class BrandDialog extends AppCompatDialogFragment {
     protected BrandViewModel brandViewModel;
     protected final String TAG = BrandAddDialog.class.getSimpleName();
     protected List<String> optionsSpinner;
+
+    protected OnClickListener onPositiveEvent;
 
     @NonNull
     @Override
@@ -60,4 +63,7 @@ public abstract class BrandDialog extends AppCompatDialogFragment {
 
     }
 
+    public void setOnPositiveEvent(View.OnClickListener onPositiveEvent) {
+        this.onPositiveEvent = onPositiveEvent;
+    }
 }
