@@ -4,7 +4,10 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.Query
 import com.practica02.mbussiness.model.entity.Article
+import com.practica02.mbussiness.model.entity.Brand
 import com.practica02.mbussiness.repository.ArticleRepository
+import com.practica02.mbussiness.repository.FirestoreRepository
+import com.practica02.mbussiness.repository.RequirementsRepository
 import com.practica02.mbussiness.repository.liveData.DocumentReferenceLiveData
 import com.practica02.mbussiness.repository.liveData.MultipleDocumentReferenceLiveData
 
@@ -15,6 +18,13 @@ class ArticleViewModel : ViewModel() {
     val allArticleLiveData: MultipleDocumentReferenceLiveData<Article, Query> by lazy {
         MultipleDocumentReferenceLiveData(
             this.repository.findAll(),
+            Article::class.java
+        )
+    }
+
+    val activeBrandLiveData: MultipleDocumentReferenceLiveData<Article, Query> by lazy {
+        MultipleDocumentReferenceLiveData(
+            FirestoreRepository.filterByRegistryState(this.repository.findAll(), RequirementsRepository.ACTIVE),
             Article::class.java
         )
     }

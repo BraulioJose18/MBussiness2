@@ -54,6 +54,7 @@ public class ArticleFragment extends Fragment {
     private Query filterResultQuery;
     private MediatorLiveData<List<? extends Article>> resultLiveData;
     private MultipleDocumentReferenceLiveData<Article, ?> allLiveData;
+    private MultipleDocumentReferenceLiveData<Article, ?> activeLiveData;
     private MultipleDocumentReferenceLiveData<Article, ?> liveDataByRegistry;
     private MultipleDocumentReferenceLiveData<Article, ?> liveDataByName;
     private MultipleDocumentReferenceLiveData<Article, ?> filterLiveData;
@@ -106,9 +107,13 @@ public class ArticleFragment extends Fragment {
         });
         this.recyclerViewArticle.setLayoutManager(new LinearLayoutManager(this.getContext()));
         this.recyclerViewArticle.setAdapter(this.articleAdapter);
-
-        this.allLiveData = this.articleViewModel.getAllArticleLiveData();
-        this.resultLiveData.addSource(this.allLiveData, articles -> resultLiveData.setValue(articles));
+//=====================================
+        this.activeLiveData = this.articleViewModel.getActiveBrandLiveData();
+        this.resultLiveData.addSource(this.activeLiveData, articles -> resultLiveData.setValue(articles));
+        this.active.setChecked(true);
+//=====================================
+//        this.allLiveData = this.articleViewModel.getAllArticleLiveData();
+//        this.resultLiveData.addSource(this.allLiveData, articles -> resultLiveData.setValue(articles));
 
         this.editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -226,6 +231,9 @@ public class ArticleFragment extends Fragment {
         }
         if (this.filterLiveData != null) {
             this.resultLiveData.removeSource(this.filterLiveData);
+        }
+        if (this.activeLiveData != null) {
+            this.resultLiveData.removeSource(this.activeLiveData);
         }
         this.resultLiveData.setValue(new ArrayList<>());
     }
